@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title> rattana calender </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="moment.js"></script>
+	
+</head>
+
+<body>
+	<span id="showmonth"> </span> <br>
+	
+	<button onclick="test_last();"> last </button>
+	<button onclick="test_last2();"> next </button>
+</body>
+
+
+
+<script>
+	var mm = [["00","01","02","03","04","05","06","07","08","09","10","11"]];
+	var z = 0;
+	var x = 0;
+	
+	var d = moment().format('DD');
+	var m = moment().format('MM');
+	var y = moment().format('YYYY');
+	
+	var bnbn;
+	
+	var test;
+	var tt;
+	var rr;
+	var ee;
+	var oo;
+	var pp;
+	var ee_1;
+	var oo_1;
+	var pp_1;
+	
+	var insert_current_month;
+	check();
+	
+	function check(){
+		
+	
+		
+		if (m == 01) { test = mm[0][0]; };
+		if (m == 02) { test = mm[0][1]; };
+		if (m == 03) { test = mm[0][2]; };
+		if (m == 04) { test = mm[0][3]; };
+		if (m == 05) { test = mm[0][4]; };
+		if (m == 06) { test = mm[0][5]; };
+		if (m == 07) { test = mm[0][6]; };
+		if (m == 08) { test = mm[0][7]; };
+		if (m == 09) { test = mm[0][8]; };
+		if (m == 10) { test = mm[0][9]; };
+		if (m == 11) { test = mm[0][10]; };
+		if (m == 12) { test = mm[0][11]; };
+		
+	
+    d = moment([y, test, d]).format('DD');
+	m = moment([y, test, d]).format('MM');	
+	y = moment([y, test, d]).format('YYYY');
+	
+	tt = moment([y, test, d]).format('YYYY - MMMM');
+	rr = moment([y, test, d]).format('YYYY,MM,DD');
+		
+	insert_current_month = document.getElementById('showmonth');
+    insert_current_month.innerHTML = tt;	
+	
+	current = rr;
+	bnbn = current;
+		
+	};
+	
+	
+	
+	
+	
+
+	function test_last(){
+		x +=1;
+		var kkk = moment().format('YYYY,MM,DD');
+		
+		if (kkk == rr) {
+			
+			console.log('yessss');
+			d = moment([y, test, d]).format('DD');
+			m = moment([y, test, d]).format('MM');	
+			y = moment([y, test, d]).format('YYYY');
+	
+			tt = moment([y, test, d]).format('YYYY - MMMM');
+			rr = moment([y, test, d]).format('YYYY,MM,DD');
+		
+			ee = moment([rr]).subtract(x, 'M').format('YYYY - MMMM');
+			insert_current_month.innerHTML = ee;
+			
+			current = moment([rr]).subtract(x, 'M').format('YYYY,MM,DD');
+			ee_1 = moment([rr]).subtract(x, 'M').format('MM');
+			
+		}
+		
+		console.log('xxxxxx '+current);
+		
+	   
+	    d = oo_1;	
+		y = pp_1;
+		m = ee_1;	
+		
+		
+		
+		if (m == 01) { test = mm[0][0]; };
+		if (m == 02) { test = mm[0][1]; };
+		if (m == 03) { test = mm[0][2]; };
+		if (m == 04) { test = mm[0][3]; };
+		if (m == 05) { test = mm[0][4]; };
+		if (m == 06) { test = mm[0][5]; };
+		if (m == 07) { test = mm[0][6]; };
+		if (m == 08) { test = mm[0][7]; };
+		if (m == 09) { test = mm[0][8]; };
+		if (m == 10) { test = mm[0][9]; };
+		if (m == 11) { test = mm[0][10]; };
+		if (m == 12) { test = mm[0][11]; };
+		
+	
+    d = moment([y, test, d]).format('DD');
+	m = moment([y, test, d]).format('MM');	
+	y = moment([y, test, d]).format('YYYY');
+	
+	
+	rr = moment([y, test, d]).format('YYYY,MM,DD');
+		
+	ee_1 = moment([rr]).subtract(x+1, 'M').format('YYYY - MMMM');
+		insert_current_month.innerHTML = ee;
+	
+	pp = moment([rr]).subtract(x+1, 'M').format('YYYY');	
+	ee_1 = moment([rr]).subtract(x+1, 'M').format('MM');
+	oo = moment([rr]).subtract(x+1, 'M').format('DD');
+		
+	current = moment([rr]).subtract(x+1, 'M').format('YYYY, MM, DD');  
+	
+	console.log(current);
+		
+	};
+	
+	function test_last2(){
+	    z += 1;
+		console.log(bnbn);
+		
+		var LLL = current;
+		var lll = moment().format('YYYY,MM,DD');
+		console.log(lll);
+		console.log(LLL);
+		
+		
+		if ( lll == rr ) {
+			
+			d = moment([y, test, d]).format('DD');
+			m = moment([y, test, d]).format('MM');	
+			y = moment([y, test, d]).format('YYYY');
+	
+			tt = moment([y, test, d]).format('YYYY - MMMM');
+			rr = moment([y, test, d]).format('YYYY,MM,DD');
+		
+			ee = moment([rr]).add(z, 'M').format('YYYY - MMMM');
+			insert_current_month.innerHTML = ee;	
+			current = moment([rr]).add(z, 'M').format('YYYY,MM,DD');
+			
+		}
+		
+		
+			
+			
+		    console.log("165 :"+LLL);
+			
+			d = moment([LLL]).format('DD');
+			if ( m != ee_1 ){ m = m; } 
+		    else { m = ee_1 };	
+			y = moment([LLL]).format('YYYY');
+		
+		
+		
+		
+		var ss = [["00","01","02","03","04","05","06","07","08","09","10","11"]];
+		
+		if (m == 01) { test = ss[0][0]; };
+		if (m == 02) { test = ss[0][1]; };
+		if (m == 03) { test = ss[0][2]; };
+		if (m == 04) { test = ss[0][3]; };
+		if (m == 05) { test = ss[0][4]; };
+		if (m == 06) { test = ss[0][5]; };
+		if (m == 07) { test = ss[0][6]; };
+		if (m == 08) { test = ss[0][7]; };
+		if (m == 09) { test = ss[0][8]; };
+		if (m == 10) { test = ss[0][9]; };
+		if (m == 11) { test = ss[0][10]; };
+		if (m == 12) { test = ss[0][11]; };
+	
+		
+		
+	
+	rr = moment([y, test, d]).format('YYYY,MM,DD');
+    fux = moment([y, test, d]).add(z, 'M').format('YYYY - MMMM');
+		
+	pp_1 = moment([y, test, d]).add(z+1, 'M').format('YYYY');
+	ee_1 = moment([y, test, d]).add(z+1, 'M').format('MM');
+	oo_1 = moment([y, test, d]).add(z+1, 'M').format('DD');
+	
+	    console.log(pp_1);
+		console.log(ee_1);
+		console.log(oo_1);
+	
+		insert_current_month.innerHTML = fux;
+		
+	};
+	
+
+</script>
+</html>

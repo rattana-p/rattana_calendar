@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> rattana calender </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="moment.js"></script>
+  <style>
+    .weekday {
+      width: 20px;
+      background-color: yellow;
+      color: black;
+      display: inline-block;
+      margin: 1px;
+      padding: 5px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body> <span id="show"> </span>
+  <br>
+  <span id="showday"> </span>
+  <br>
+  <button onclick="test_last();"> last </button>
+  <button onclick="test_last2();"> next </button>
+  <br>
+  <br>
+  <button onclick="first();"> TODAY </button>
+  <br>
+  <br>
+  <div id="show_totaldays">
+  </div>
+</body>
+<script>
+  
+  var time_now;
+  var time_from_next_month;
+  var time_from_last_month;
+  var z = 0;
+  var x = 0;
+  var month_header = document.getElementById('show');
+  
+  
+  var a;
+  var aa;
+  var aaa;
+  var bbb;
+  
+  $(document).ready(function () {
+    first();
+   
+  })
+
+  function first() {
+    time_now = moment().format('YYYY, MMMM');
+    month_header.innerHTML = time_now;
+    time_from_next_month = time_now;
+    time_from_last_month = time_now;
+    x = 0;
+    z = 0;
+    showday(time_now);
+  };
+
+  function test_last() {
+    x += 1;
+    time_from_last_month = moment(time_from_next_month).subtract(x, 'M').format('YYYY, MMMM');
+    month_header.innerHTML = time_from_last_month;
+    z = 0;
+    showday(time_from_last_month);
+  };
+
+  function test_last2() {
+    z += 1;
+    time_from_next_month = moment(time_from_last_month).add(z, 'M').format('YYYY, MMMM ');
+    month_header.innerHTML = time_from_next_month;
+    x = 0;
+    showday(time_from_next_month);
+  };
+  
+  var showdays;
+  function showday(time_now){
+    showdays = moment(time_now).daysInMonth();
+    document.getElementById('showday').innerHTML = showdays+" days";
+    
+    $('.weekday').remove();
+    aa = moment(time_now).format('d');
+    
+    insert_day(time_now);
+    
+    
+     console.log(aa);
+    
+  };
+    
+ 
+    function insert_day(){
+      
+    var board = document.getElementById('show_totaldays');
+    console.log(aa);  
+      
+     for ( var j = 0; j < aa; j++) {
+        var backside = document.createElement("div");
+        backside.innerHTML = '';
+        backside.className = 'weekday';
+        board.appendChild(backside);
+       
+     }  
+        
+     for (var i = 1; i <= showdays; i++){
+        var backside = document.createElement("div");
+        backside.innerHTML = ''+[i]+'';
+        backside.className = 'weekday';
+        board.appendChild(backside);
+     
+       
+       
+       
+}
+  }
+  
+  
+  
+</script>
+
+</html>
